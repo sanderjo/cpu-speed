@@ -71,7 +71,8 @@ Multi-core  (8 threads) ... 475780000 iterations  (475.8 M/s total, 59.5 M/s per
   Each iteration executes 16 integer operations: add, sub, xor, shift, multiply, and array accesses across a 16-element uint32_t array. Cross-iteration  
   data dependencies prevent the compiler from vectorising or unrolling the work away. A checksum over v[] is "used" at the end to prevent dead-code    
   elimination. The time check happens every 10 000 inner iterations so clock_gettime overhead is negligible.                                             
-```
+
                                                                                                                                                    
   For multicore, pthreads are spawned (one per logical CPU via _SC_NPROCESSORS_ONLN), the GIL is released with Py_BEGIN_ALLOW_THREADS, and results are   
   summed after all threads join.
+```
